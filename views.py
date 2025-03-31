@@ -46,7 +46,6 @@ def movimentar_dinheiro (historico: Historico):
     with Session(engine) as session:
         statement = select(Conta).where(Conta.id==historico.conta_id)
         conta = session.exec(statement).first()
-        #TO-DO:validar se a conta está ativa
         if historico.tipo == Tipos.ENTRADA:
             conta.valor += historico.dalor
         else:
